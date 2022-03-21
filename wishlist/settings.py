@@ -88,10 +88,10 @@ WSGI_APPLICATION = 'wishlist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dejfdjqiqq8sue',
-        'USER': 'dhnuuqfivlpguo',
-        'PASSWORD': 'e278c9ed9feaa5df058a94d9b252fec10efd827b31d83f9761accd60ed413cfc',
-        'HOST': 'ec2-176-34-105-15.eu-west-1.compute.amazonaws.com',
+        'NAME': 'devs7bqi3akpg',
+        'USER': 'okzejekcndjest',
+        'PASSWORD': '2cc3ae2d115f2e6af7947520c1b475c11f0c96befffa6f036ba074804c02972e',
+        'HOST': 'ec2-54-77-90-39.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -138,8 +138,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
+    'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer', # show UI of API
-    )
+        'rest_framework.renderers.BrowsableAPIRenderer',  # show UI of API
+    ],
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
