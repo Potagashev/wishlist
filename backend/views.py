@@ -24,7 +24,7 @@ class WishAPIListCreate(generics.ListCreateAPIView):
 class WishAPIRetrieveUpdate(generics.RetrieveUpdateAPIView):
     queryset = Wish.objects.all()
     serializer_class = WishSerializer
-    permission_classes = (IsOwner, ReadOnlyForAuthenticated)  # может менять только автор
+    permission_classes = (IsOwner, ReadOnlyForAuthenticated)  # может менять только автор, читать - авторизованные
 
 
 class WishAPIRetrieveDestroy(generics.RetrieveDestroyAPIView):
