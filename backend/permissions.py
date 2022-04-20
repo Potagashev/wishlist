@@ -1,12 +1,11 @@
 from rest_framework import permissions
 
+from rest_framework.permissions import SAFE_METHODS
 
-# чтение только авторизованным
-class ReadOnlyForAuthenticated(permissions.BasePermission):
+
+class ReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
-        if request.method in permissions.SAFE_METHODS:
-            if bool(request.user and request.user.is_authenticated):
-                return True
+        return request.method in SAFE_METHODS
 
 
 # менять можно только владельцу/автору

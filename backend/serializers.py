@@ -1,17 +1,32 @@
 from rest_framework import serializers
-from .models import Wish, CatalogItem
+from .models import Gift, Wishlist, WishlistItem, MyUser
 
 
-class WishSerializer(serializers.ModelSerializer):
+class MyUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MyUser
+        fields = '__all__'
+
+
+class GiftSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gift
+        fields = '__all__'
+
+
+class WishlistSerialiser(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
-        model = Wish
+        model = Wishlist
         fields = '__all__'
 
 
-class CatalogItemSerializer(serializers.ModelSerializer):
+class WishlistItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CatalogItem
+        model = WishlistItem
         fields = '__all__'
+
+
+
 
