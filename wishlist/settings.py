@@ -91,10 +91,10 @@ WSGI_APPLICATION = 'wishlist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'devs7bqi3akpg',
-        'USER': 'okzejekcndjest',
-        'PASSWORD': '2cc3ae2d115f2e6af7947520c1b475c11f0c96befffa6f036ba074804c02972e',
-        'HOST': 'ec2-54-77-90-39.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd9u70h2jlv1je7',
+        'USER': 'pnzugabbozwfhm',
+        'PASSWORD': '4e7d47d0f3cd434c44d344a0d69381a4ef5a46ff09a86c25084c1ced19b0cb4f',
+        'HOST': 'ec2-176-34-211-0.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -116,6 +116,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = "backend.MyUser"
 
 
 # Internationalization
@@ -145,9 +147,9 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',  # show UI of API
     ],
-    'DEFAULT_PERMISSION_CLASSES': [
+    'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-    ],
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',

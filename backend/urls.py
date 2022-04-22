@@ -5,11 +5,25 @@ from backend import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/catalog', views.GiftAPIListCreate.as_view()),  # можно выводить и создавать, в зависимости от
+    path('api/v1/gifts', views.GiftAPIListCreate.as_view()),  # можно выводить и создавать, в зависимости от
     # метода запроса
-    path('api/v1/wishes', views.WishAPIListCreate.as_view()),
-    path('api/v1/wishes/<int:pk>', views.WishAPIRetrieveUpdate.as_view()),
-    path('api/v1/wishes/<int:pk>/delete', views.WishAPIRetrieveDestroy.as_view()),
+    path('api/v1/gifts/<int:pk>', views.GiftAPIRetrieveUpdate.as_view()),
+
+    path('api/v1/wishlists', views.WishlistAPIListCreate.as_view()),
+    path('api/v1/wishlists/<int:pk>', views.WishlistAPIRetrieve.as_view()),
+
+    path('api/v1/wishes', views.WishlistItemAPIListCreate.as_view()),
+    path('api/v1/wishes/<int:pk>', views.WishlistItemAPIRetrieveUpdate.as_view()),
+    path('api/v1/wishes/<int:pk>/delete', views.WishlistItemAPIRetrieveDestroy.as_view()),
+
+    path('api/v1/user/<int:pk>', views.MyUserAPIRetrieve.as_view()),
+    path('api/v1/user/<int:pk>/friends', views.FriendAPIList.as_view()),
+
+    path('api/v1/user/are_friends', views.AreFriends.as_view()),
+    path('api/v1/user/request_friendship', views.RequestFriendship.as_view()),
+    path('api/v1/user/confirm_friendship_request', views.ConfirmFriendshipRequest.as_view()),
+
+    # path('api/v1/add_friend', views.)
 
     path(r'api/v1/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),

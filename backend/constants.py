@@ -19,3 +19,5 @@ CATEGORIES = [
 SUB_CATEGORIES = []
 
 GENDERS = [('Man', 'Мужчина'), ('Woman', 'Женщина')]
+
+STATUSES = [(1, 'Запрос отправлен'), (2, 'В друзьях')]

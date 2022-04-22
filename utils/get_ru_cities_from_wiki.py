@@ -25,5 +25,4 @@ def get_ru_cities_from_wiki():
     for city in output:
         cities.append((city['name'], f"{city['name']}, {city['subject']}"))
 
-    print(cities)
     return cities
