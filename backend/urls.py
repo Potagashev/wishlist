@@ -22,6 +22,8 @@ urlpatterns = [
     path('api/v1/user/are_friends', views.AreFriends.as_view()),
     path('api/v1/user/request_friendship', views.RequestFriendship.as_view()),
     path('api/v1/user/confirm_friendship_request', views.ConfirmFriendshipRequest.as_view()),
+    path('api/v1/user/reject_friendship_request', views.RejectFriendshipRequest.as_view()),
+    path('api/v1/user/remove_friend', views.RemoveFriend.as_view()),
 
     # path('api/v1/add_friend', views.)
 

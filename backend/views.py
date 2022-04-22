@@ -7,7 +7,8 @@ from backend.permissions import IsOwner, ReadOnly, IsFriend
 from backend.models import Gift, WishlistItem, MyUser, Friend, Wishlist
 from backend.serializers import GiftSerializer, WishlistItemSerializer, MyUserSerializer, FriendSerializer, \
     WishlistSerializer
-from utils.utils import are_friends, request_friendship, confirm_friendship_request
+from utils.utils import are_friends, request_friendship, confirm_friendship_request, reject_friendship_request, \
+    remove_friend
 
 
 # инфа о пользователе
@@ -55,6 +56,28 @@ class ConfirmFriendshipRequest(APIView):
 
     def post(self, request):
         response = confirm_friendship_request(
+            current_user_id=self.request.user.id,
+            user_being_checked_id=self.request.query_params.get('user')
+        )
+        return response
+
+
+class RejectFriendshipRequest(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        response = reject_friendship_request(
+            current_user_id=self.request.user.id,
+            user_being_checked_id=self.request.query_params.get('user')
+        )
+        return response
+
+
+class RemoveFriend(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        response = remove_friend(
             current_user_id=self.request.user.id,
             user_being_checked_id=self.request.query_params.get('user')
         )
