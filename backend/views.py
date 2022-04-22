@@ -13,12 +13,10 @@ from utils.utils import are_friends, request_friendship, confirm_friendship_requ
 
 # инфа о пользователе
 # url: re_path('^/(?P<username>.+)/$', PurchaseList.as_view()),
-
-
 class MyUserAPIRetrieve(generics.RetrieveAPIView):
     queryset = MyUser.objects.all()
     serializer_class = MyUserSerializer
-    permission_classes = [(IsOwner | IsAdminUser)]
+    permission_classes = [(IsOwner | IsFriend)]
 
 
 # список друзей по айди
@@ -74,7 +72,7 @@ class RejectFriendshipRequest(APIView):
 
 
 class RemoveFriend(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [(IsAuthenticated | IsFriend)]
 
     def post(self, request):
         response = remove_friend(
@@ -84,7 +82,7 @@ class RemoveFriend(APIView):
         return response
 
 
-#  вывод каталога типа и возможность добавлять новый
+#  вывод каталога гифтов и возможность добавлять новый
 class GiftAPIListCreate(generics.ListCreateAPIView):
     queryset = Gift.objects.all()
     serializer_class = GiftSerializer
@@ -106,20 +104,28 @@ class GiftAPIRetrieveDestroy(generics.RetrieveDestroyAPIView):
     permission_classes = [IsAdminUser | (ReadOnly & IsAuthenticated)]  # удалять могут только админы,
 
 
-class WishlistAPIListCreate(generics.ListCreateAPIView):
+class WishlistAPICreate(generics.CreateAPIView):
+    queryset = Wishlist.objects.all()
+    serializer_class = WishlistSerializer
+    permission_classes = (IsOwner, )
+
+
+class WishlistAPIList(generics.ListAPIView):
+    # если нет параметров, то для текущего пользователя
+    # иначе для того, кто указан в параметрах
     def get_queryset(self):
         if self.request.query_params is None:
             return Wishlist.objects.all()
         else:
             return Wishlist.objects.filter(user=self.request.query_params.get('user'))
     serializer_class = WishlistSerializer
-    permission_classes = (IsOwner, )
+    permission_classes = [(IsOwner | IsFriend)]
 
 
 class WishlistAPIRetrieve(generics.RetrieveAPIView):
     queryset = Wishlist.objects.all()
     serializer_class = WishlistSerializer
-    permission_classes = (IsOwner, )
+    permission_classes = [(IsOwner | IsFriend)]
 
 
 #  вывод желаний

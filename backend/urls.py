@@ -9,7 +9,8 @@ urlpatterns = [
     # метода запроса
     path('api/v1/gifts/<int:pk>', views.GiftAPIRetrieveUpdate.as_view()),
 
-    path('api/v1/wishlists', views.WishlistAPIListCreate.as_view()),
+    path('api/v1/create_wishlist', views.WishlistAPICreate.as_view()),
+    path('api/v1/wishlists', views.WishlistAPIList.as_view()),
     path('api/v1/wishlists/<int:pk>', views.WishlistAPIRetrieve.as_view()),
 
     path('api/v1/wishes', views.WishlistItemAPIListCreate.as_view()),
@@ -17,15 +18,13 @@ urlpatterns = [
     path('api/v1/wishes/<int:pk>/delete', views.WishlistItemAPIRetrieveDestroy.as_view()),
 
     path('api/v1/user/<int:pk>', views.MyUserAPIRetrieve.as_view()),
-    path('api/v1/user/<int:pk>/friends', views.FriendAPIList.as_view()),
 
+    path('api/v1/user/friends', views.FriendAPIList.as_view()),
     path('api/v1/user/are_friends', views.AreFriends.as_view()),
     path('api/v1/user/request_friendship', views.RequestFriendship.as_view()),
     path('api/v1/user/confirm_friendship_request', views.ConfirmFriendshipRequest.as_view()),
     path('api/v1/user/reject_friendship_request', views.RejectFriendshipRequest.as_view()),
     path('api/v1/user/remove_friend', views.RemoveFriend.as_view()),
-
-    # path('api/v1/add_friend', views.)
 
     path(r'api/v1/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
