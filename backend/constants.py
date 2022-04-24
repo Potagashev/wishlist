@@ -1,3 +1,15 @@
+REGISTRATION_REQUIRED_FIELDS = [
+        'password',
+        'first_name',
+        'last_name',
+        'email',
+        'patronymic',
+        'city',
+        'gender',
+        'b_date',
+        'photo'
+    ]
+
 CLOTHES = 'Clothes'
 ELECTRONICS = 'Electronics'
 SPORT = 'Sport'

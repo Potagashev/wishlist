@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'backend.apps.BackendConfig',
-    'rest_framework',
-    'frontend',  # enable the frontend app
+    'friendship.apps.FriendshipConfig',
 
+    'rest_framework',
     'rest_framework.authtoken',
     'djoser',
 ]
@@ -153,6 +153,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
     ),
 }

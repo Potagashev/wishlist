@@ -17,21 +17,15 @@ urlpatterns = [
     path('api/v1/wishes/<int:pk>', views.WishlistItemAPIRetrieveUpdate.as_view()),
     path('api/v1/wishes/<int:pk>/delete', views.WishlistItemAPIRetrieveDestroy.as_view()),
 
-    path('api/v1/user/<int:pk>', views.MyUserAPIRetrieve.as_view()),
-
-    path('api/v1/user/friends', views.FriendAPIList.as_view()),
-    path('api/v1/user/are_friends', views.AreFriends.as_view()),
-    path('api/v1/user/request_friendship', views.RequestFriendship.as_view()),
-    path('api/v1/user/confirm_friendship_request', views.ConfirmFriendshipRequest.as_view()),
-    path('api/v1/user/reject_friendship_request', views.RejectFriendshipRequest.as_view()),
-    path('api/v1/user/remove_friend', views.RemoveFriend.as_view()),
+    # path('api/v1/user/<int:pk>', views.MyUserAPIRetrieve.as_view()),
+    re_path('^api/v1/user/(?P<username>.+)/$', views.MyUserAPIRetrieve.as_view()),
 
     path(r'api/v1/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
+
     # POST - /api/v1/auth/users/ - создать юзера
     # GET - /api/v1/auth/users/ - список юзеров
     # POST - /auth/token/login/ - авторизация с выдачей токена
-    # POST - /auth/token/logout/ - выход из системы, с удалением токена. ничего не возрвращает
     # GET - /users/me/ - {{ User.USERNAME_FIELD }} {{ User._meta.pk.name }} {{ User.REQUIRED_FIELDS }}
     # PUT - /users/me/ - на вход по идее нужно дать все обязательные поля, как минимум, выдает то, что и в ГЕТе
     # PATCH - /users/me/ - на вход надо отдать поле, которое будет меняться

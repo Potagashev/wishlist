@@ -1,32 +1,26 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
-from backend.constants import CATEGORIES, GENDERS, SUB_CATEGORIES, STATUSES
+from backend.constants import CATEGORIES, GENDERS, SUB_CATEGORIES, REGISTRATION_REQUIRED_FIELDS
 from utils import get_ru_cities_from_wiki as get_cities
-
 
 cities = get_cities.get_ru_cities_from_wiki()
 
 
 class MyUser(AbstractUser):
+    REQUIRED_FIELDS = REGISTRATION_REQUIRED_FIELDS
+    first_name = models.CharField(_("first name"), max_length=150, blank=False, null=False)
+    last_name = models.CharField(_("last name"), max_length=150, blank=False, null=False)
+    email = models.EmailField(_("email address"), unique=True, blank=False, null=False)
     patronymic = models.CharField(blank=True, null=True, max_length=256, verbose_name='patronymic')
     gender = models.CharField(blank=True, null=True, max_length=64, choices=GENDERS)
     city = models.CharField(blank=True, null=True, max_length=256, choices=cities)
     b_date = models.DateField(blank=True, null=True)
-    photo = models.ImageField(blank=True, max_length=256, default=None)
+    photo = models.ImageField(blank=True, null=True, max_length=256, default=None)
 
     def __str__(self):
         return self.username
-
-
-class Friend(models.Model):
-    friend1 = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='who_requests')
-    friend2 = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='who_responses')
-    status = models.IntegerField(choices=STATUSES)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f'{self.friend1}, {self.friend2}'
 
 
 class Gift(models.Model):
