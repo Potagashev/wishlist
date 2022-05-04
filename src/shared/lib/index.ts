@@ -1,4 +1,4 @@
 export enum AppPages {
-    AUTHORIZATION = "/signIn",
+    AUTHORIZATION = "/",
     REGISTRATION = "/signUp"
 }

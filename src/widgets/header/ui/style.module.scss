@@ -1,0 +1,27 @@
+@import "src/app/styles/variables";
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: $primaryColor;
+  font-family: $fontFactorA;
+  font-size: 30px;
+  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  color: white;
+  @media (max-width: $sm) {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+}
+
+.headerTitle {
+  margin-left: 10px;
+  @media (max-width: $sm) {
+    margin-left: 5px;
+  }
+}
