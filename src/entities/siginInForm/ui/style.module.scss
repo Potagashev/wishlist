@@ -8,6 +8,9 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 70px;
+  @media (max-width: $sm) {
+    margin-top: 20px;
+  }
 }
 
 .signInBlock {

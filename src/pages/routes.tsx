@@ -1,6 +1,6 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
-import {AppPages} from "../shared/lib";
+import {AppPages} from "../shared/lib/routes";
 import SignIn from "./signin";
 import SignUp from "./signup";
 
