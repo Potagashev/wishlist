@@ -1,0 +1,787 @@
+{
+	"info": {
+		"_postman_id": "667b94b0-40b4-4908-aab4-7675d408e754",
+		"name": "User Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "About Current User",
+			"id": "6af095f4-079b-4755-936d-88e2ac70e1a9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 215043da413c5b7063fd5e57c0a90e26e2866b4f",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/auth/users/me",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"users",
+						"me"
+					],
+					"query": [
+						{
+							"key": "Auth",
+							"value": "Token 0de41c13da15d7ba8e989d3ee6055d20c34cef5e",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "06c92854-eaa6-480e-9325-7411df323f26",
+					"name": "About Current User",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 5f38719b39a3815dfc0427ca971d67c67bdf16df",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/auth/users/me",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								"me"
+							],
+							"query": [
+								{
+									"key": "Auth",
+									"value": "Token 0de41c13da15d7ba8e989d3ee6055d20c34cef5e",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 24 Apr 2022 14:20:34 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "302"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"password\": \"pbkdf2_sha256$320000$RNxQ1qJEcitmsawgqlhe07$RXtPxFsSf8FiHDedlcf9/ouegE84tmKR0sGyX7PooDM=\",\n    \"first_name\": \"Сергей\",\n    \"last_name\": \"Сергеев\",\n    \"email\": \"sergey6@tpu.ru\",\n    \"patronymic\": null,\n    \"city\": \"Томск\",\n    \"gender\": \"Man\",\n    \"b_date\": \"2002-04-06\",\n    \"photo\": null,\n    \"id\": 11,\n    \"username\": \"sergey6\"\n}"
+				}
+			]
+		},
+		{
+			"name": "About User By Username",
+			"id": "d55f4717-010c-4efd-a09f-f043cbba6465",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4d0ef3f9b4dcb0a070151c1ef98ba697b72ec17e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/user/sashs/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"sashs",
+						""
+					]
+				},
+				"description": "It works only if the user you checking is a friend for current user"
+			},
+			"response": [
+				{
+					"id": "a6d7b776-bfbb-4281-8a07-05c9bd0128e2",
+					"name": "About User By Username",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4d0ef3f9b4dcb0a070151c1ef98ba697b72ec17e",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/user/sashs/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"sashs",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 25 Apr 2022 07:05:57 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "438"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"id\": 14,\n    \"password\": \"pbkdf2_sha256$320000$OiWbLNKPVRWLEPL2uzStqI$UEoiK2i5plTsbiIqOpp0nUzUIVM7lEJjXC9hn2vd03I=\",\n    \"last_login\": \"2022-04-24T14:45:26.890990Z\",\n    \"is_superuser\": true,\n    \"username\": \"sashs\",\n    \"is_staff\": true,\n    \"is_active\": true,\n    \"date_joined\": \"2022-04-24T14:44:59.782846Z\",\n    \"first_name\": \"alex\",\n    \"last_name\": \"alex\",\n    \"email\": \"alex@tpu.ru\",\n    \"patronymic\": \"\",\n    \"gender\": \"\",\n    \"city\": \"\",\n    \"b_date\": \"2002-12-22\",\n    \"photo\": null,\n    \"groups\": [],\n    \"user_permissions\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Users",
+			"id": "0e70e376-742b-4be0-973f-c2668116dc3b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 215043da413c5b7063fd5e57c0a90e26e2866b4f",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/auth/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "293a0cd6-0b99-44c1-a417-e70e01495985",
+					"name": "Get All Users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 5f38719b39a3815dfc0427ca971d67c67bdf16df",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/auth/users/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 24 Apr 2022 14:20:57 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "304"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "[\n    {\n        \"password\": \"pbkdf2_sha256$320000$RNxQ1qJEcitmsawgqlhe07$RXtPxFsSf8FiHDedlcf9/ouegE84tmKR0sGyX7PooDM=\",\n        \"first_name\": \"Сергей\",\n        \"last_name\": \"Сергеев\",\n        \"email\": \"sergey6@tpu.ru\",\n        \"patronymic\": null,\n        \"city\": \"Томск\",\n        \"gender\": \"Man\",\n        \"b_date\": \"2002-04-06\",\n        \"photo\": null,\n        \"id\": 11,\n        \"username\": \"sergey6\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Edit User Info | All Fields",
+			"id": "cf72baaa-f707-4645-b250-99614d45dd5d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 215043da413c5b7063fd5e57c0a90e26e2866b4f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"1234\",\r\n    \"first_name\": \"Александр\",\r\n    \"last_name\": \"Александров\",\r\n    \"email\": \"aip25@tpu.ru\",\r\n    \"city\": null,\r\n    \"gender\": null,\r\n    \"b_date\": null,\r\n    \"photo\": null,\r\n    \"username\": \"sasha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/auth/users/me/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"users",
+						"me",
+						""
+					]
+				},
+				"description": "Using this Endpoint you should provide all required fields and its values.\n\nAlso in password field it'd better provide a password in the form of a **hash.**"
+			},
+			"response": [
+				{
+					"id": "604efbf7-27ce-4500-9e5a-2e36988234ba",
+					"name": "Edit User Info | All Fields",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b89f2054854763ae67ecc0e78a02907c0a35cc4c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"pbkdf2_sha256$320000$RNxQ1qJEcitmsawgqlhe07$RXtPxFsSf8FiHDedlcf9/ouegE84tmKR0sGyX7PooDM=\",\r\n    \"first_name\": \"Сергей22222222222222\",\r\n    \"last_name\": \"Сергеев\",\r\n    \"email\": \"sergey6@tpu.ru\",\r\n    \"gender\": \"Man\",\r\n    \"username\": \"sergey6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/auth/users/me/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								"me",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 24 Apr 2022 14:38:55 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "301"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"password\": \"pbkdf2_sha256$320000$RNxQ1qJEcitmsawgqlhe07$RXtPxFsSf8FiHDedlcf9/ouegE84tmKR0sGyX7PooDM=\",\n    \"first_name\": \"Сергей22222222222222\",\n    \"last_name\": \"Сергеев\",\n    \"email\": \"sergey6@tpu.ru\",\n    \"patronymic\": \"\",\n    \"city\": \"\",\n    \"gender\": \"Man\",\n    \"b_date\": \"2002-04-06\",\n    \"photo\": null,\n    \"id\": 13,\n    \"username\": \"alex\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit User Info | Only chosen fields",
+			"id": "f4f3e40e-d0fc-465d-9737-3a82a90fa772",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token b89f2054854763ae67ecc0e78a02907c0a35cc4c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"pbkdf2_sha256$320000$RNxQ1qJEcitmsawgqlhe07$RXtPxFsSf8FiHDedlcf9/ouegE84tmKR0sGyX7PooDM=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/auth/users/me/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"users",
+						"me",
+						""
+					]
+				},
+				"description": "Using this Endpoint you should provide only the fields you want to edit."
+			},
+			"response": [
+				{
+					"id": "8926a8f2-77d9-47c7-a065-1608ec69d3d7",
+					"name": "Edit User Info | Only chosen fields",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b89f2054854763ae67ecc0e78a02907c0a35cc4c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"pbkdf2_sha256$320000$RNxQ1qJEcitmsawgqlhe07$RXtPxFsSf8FiHDedlcf9/ouegE84tmKR0sGyX7PooDM=\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/auth/users/me/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								"me",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 24 Apr 2022 14:39:57 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "301"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"password\": \"pbkdf2_sha256$320000$RNxQ1qJEcitmsawgqlhe07$RXtPxFsSf8FiHDedlcf9/ouegE84tmKR0sGyX7PooDM=\",\n    \"first_name\": \"Сергей22222222222222\",\n    \"last_name\": \"Сергеев\",\n    \"email\": \"sergey6@tpu.ru\",\n    \"patronymic\": \"\",\n    \"city\": \"\",\n    \"gender\": \"Man\",\n    \"b_date\": \"2002-04-06\",\n    \"photo\": null,\n    \"id\": 13,\n    \"username\": \"alex\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit User Info | Only chosen fields Copy",
+			"id": "5838720c-c8a0-4ddf-b67b-76a0ccba81fc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token b89f2054854763ae67ecc0e78a02907c0a35cc4c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/auth/users/me/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"users",
+						"me",
+						""
+					]
+				},
+				"description": "Using this Endpoint you should provide only the fields you want to edit."
+			},
+			"response": [
+				{
+					"id": "eff23931-12ba-4eda-a42f-b80a29c3c8f4",
+					"name": "Edit User Info | Only chosen fields Copy",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b89f2054854763ae67ecc0e78a02907c0a35cc4c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"current_password\": \"serhio.2001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/auth/users/me/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								"me",
+								""
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 24 Apr 2022 14:47:38 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.8"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": null
+				}
+			]
+		}
+	]
+}
