@@ -1,8 +1,6 @@
-from rest_framework import generics, viewsets
-from rest_framework.authentication import TokenAuthentication, BasicAuthentication, SessionAuthentication
+from rest_framework import generics
 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
-from rest_framework.views import APIView
 
 from backend.permissions import IsOwner, ReadOnly, IsFriend
 from backend.models import Gift, WishlistItem, MyUser, Wishlist
