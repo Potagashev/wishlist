@@ -39,7 +39,7 @@ const SignInForm: React.FC = () => {
     const changeShowPasswordState = () => {
         setShowPassword(!showPassword);
     }
-    console.log(login.errors)
+
     return (
         <div className={styles.signInForm}>
             <div className={styles.signInBlock}>

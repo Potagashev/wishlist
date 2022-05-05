@@ -1,0 +1,58 @@
+@import "src/app/styles/variables";
+
+.signUpForm {
+  font-family: $fontFactorA;
+  margin-top: 60px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 70px;
+  @media (max-width: $sm) {
+    margin-top: 20px;
+  }
+}
+
+.signUpBlock {
+
+  width: 400px;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  padding: 10px;
+
+  @media (max-width: $sm) {
+    width: 100%;
+    margin: 0px 20px
+  }
+}
+
+.password {
+  margin: 10px 0px 20px 0px;
+}
+
+.button {
+  width: 100%;
+}
+
+.formHeader {
+  text-align: center;
+}
+
+.dataPicker {
+
+}
+
+.signUp {
+  font-size: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: $primaryColor;
+
+  &:hover {
+    color: #13069c;
+  }
+}
