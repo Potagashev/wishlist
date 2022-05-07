@@ -1,1 +1,1 @@
-web: gunicorn wishlist.wsgi --log-file--
+web: gunicorn wishlist.wsgi --log-file -
