@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styles from "./style.module.scss";
-import {Box, Button, FormControl, IconButton, Input, InputAdornment, InputLabel, TextField} from "@mui/material";
+import {Button, FormControl, IconButton, Input, InputAdornment, InputLabel, TextField} from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {NavLink} from "react-router-dom";
 import {maxLength, requiredField} from "../../../shared/lib/validators";
@@ -10,7 +10,11 @@ interface ILogin {
     errors: any[] | never[]
 }
 
-const SignInForm: React.FC = () => {
+interface SignInFormsProps {
+    setLoading(value: boolean): void
+}
+
+const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
     const [login, setLogin] = useState<ILogin>({
         value: "",
         errors: []
@@ -39,7 +43,9 @@ const SignInForm: React.FC = () => {
     const changeShowPasswordState = () => {
         setShowPassword(!showPassword);
     }
-
+    const handleSubmit = () => {
+        alert("click")
+    }
     return (
         <div className={styles.signInForm}>
             <div className={styles.signInBlock}>
@@ -68,7 +74,8 @@ const SignInForm: React.FC = () => {
                 <div className={styles.password}>
                     <FormControl sx={{width: 1}} variant="outlined">
                         {password.errors.length === 0 ?
-                            <><InputLabel variant={"standard"} htmlFor="standard-adornment-password">Пароль</InputLabel><Input
+                            <><InputLabel variant={"standard"}
+                                          htmlFor="standard-adornment-password">Пароль</InputLabel><Input
                                 id="standard-adornment-password"
                                 type={showPassword ? 'text' : 'password'}
                                 value={password.value}
@@ -102,7 +109,7 @@ const SignInForm: React.FC = () => {
                                 /></>}
                     </FormControl>
                 </div>
-                <Button className={styles.button} variant="contained">Войти</Button>
+                <Button className={styles.button} onClick={handleSubmit} variant="contained">Войти</Button>
                 <h1 className={styles.signUp}>У Вас еще нет аккаунта? <NavLink className={styles.link}
                                                                                to={"/signUp"}>Зарегистрируйтесь</NavLink>
                 </h1>

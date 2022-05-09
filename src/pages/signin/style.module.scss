@@ -1,5 +1,21 @@
-.signin {
+.signinLoading {
   position: relative;
-
+  filter: blur(10px);
   min-height: calc(100vh);
+}
+.signin{
+  min-height: calc(100vh);
+  position: relative;
+}
+
+.loadingModal {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
