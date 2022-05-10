@@ -56,3 +56,9 @@
     color: #13069c;
   }
 }
+.failWindow {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+}

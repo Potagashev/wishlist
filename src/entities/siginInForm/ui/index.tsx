@@ -52,6 +52,7 @@ const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
         const error = [];
         if (requiredField(value) != true) error.push(requiredField(value))
         else if (maxLength(value, 30) != true) error.push(maxLength(value, 30));
+
         setPassword({value: value, errors: error});
     }
     const changeShowPasswordState = () => {
