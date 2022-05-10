@@ -27,7 +27,13 @@ SECRET_KEY = 'django-insecure-10g91g^=np7&#6s%7ri8%w6##8%rc=or@-&@n)4rk!&n&c4%3%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['wishlist-app-tpu.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'wishlist-app-tpu.herokuapp.com',
+    '127.0.0.1',
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'localhost'
+]
 
 
 # Application definition
