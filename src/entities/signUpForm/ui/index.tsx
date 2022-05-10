@@ -15,10 +15,11 @@ import {
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DatePicker} from '@mui/x-date-pickers/DatePicker';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {Close, Visibility, VisibilityOff} from "@mui/icons-material";
 import {emailValidation, formatYmd, maxLength, minLength, requiredField} from "../../../shared/lib/validators";
 import {userRegistration} from "../../../shared/api/http-querry";
+import {AppPages} from "../../../shared/lib/routes";
 
 interface ILogin {
     value: string,
@@ -30,6 +31,7 @@ interface SignUpFormProps {
 }
 
 const SignUpForm: React.FC<SignUpFormProps> = ({setLoading}) => {
+    const navigate = useNavigate();
     const [value, setValue] = React.useState<Date | null>(null);
     const [password, setPassword] = useState<ILogin>({
         value: "",
@@ -155,7 +157,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({setLoading}) => {
             const response = await userRegistration(data).then(
                 response => {
                     if (response.ok) {
-                        alert("Успешно создан юзер!");
+                        setError({state: false, text: ""})
+                        localStorage.setItem("alreadySignUp", "true");
+                        navigate(AppPages.AUTHORIZATION);
                     } else {
                         // @ts-ignore
                         response.json().then(data => setError({state: true, text: data[Object.keys(data)[0]]}));

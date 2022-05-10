@@ -38,6 +38,7 @@ const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
     });
     const [showPassword, setShowPassword] = useState(false);
     const [open, setOpen] = useState(false);
+    const [alreadySignUp, setAlreadySignUp] = useState(localStorage.getItem("alreadySignUp") ? true : false);
     const navigate = useNavigate();
     const changeLoginState = (value: string) => {
         const error = [];
@@ -70,8 +71,9 @@ const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
                     if (response.ok) {
                         response.json().then(token => {
                             setOpen(false);
-                            localStorage.setItem("token", token.auth_token)});
-                            navigate(AppPages.MAIN);
+                            localStorage.setItem("token", token.auth_token)
+                        });
+                        navigate(AppPages.MAIN);
                     } else {
                         setOpen(true);
                     }
@@ -83,10 +85,11 @@ const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
     }
     return (
         <div className={styles.signInForm}>
+
             <Box sx={{width: '100%'}} className={styles.failWindow}>
                 <Collapse in={open}>
                     <Alert
-                        severity="error"
+                        severity={"error"}
                         action={
                             <IconButton
                                 aria-label="close"
@@ -102,6 +105,29 @@ const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
                         sx={{mb: 2}}
                     >
                         Неверный логин или пароль!
+                    </Alert>
+                </Collapse>
+            </Box>
+            <Box sx={{width: '100%'}} className={styles.failWindow}>
+                <Collapse in={alreadySignUp}>
+                    <Alert
+
+                        action={
+                            <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => {
+                                    localStorage.removeItem("alreadySignUp");
+                                    setAlreadySignUp(false);
+                                }}
+                            >
+                                <Close fontSize="inherit"/>
+                            </IconButton>
+                        }
+                        sx={{mb: 2}}
+                    >
+                        Аккаунт успешно создан!
                     </Alert>
                 </Collapse>
             </Box>
