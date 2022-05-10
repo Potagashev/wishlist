@@ -1,0 +1,1 @@
+export const BASE_URL = "https://wishlist-app-tpu.herokuapp.com/"

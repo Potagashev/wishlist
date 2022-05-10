@@ -1,9 +1,22 @@
 import React, {useState} from "react";
 import styles from "./style.module.scss";
-import {Button, FormControl, IconButton, Input, InputAdornment, InputLabel, TextField} from "@mui/material";
-import {Visibility, VisibilityOff} from "@mui/icons-material";
-import {NavLink} from "react-router-dom";
+import {
+    Alert,
+    AlertTitle, Box,
+    Button,
+    Collapse,
+    FormControl,
+    IconButton,
+    Input,
+    InputAdornment,
+    InputLabel,
+    TextField
+} from "@mui/material";
+import {Close, Visibility, VisibilityOff} from "@mui/icons-material";
+import {NavLink, useNavigate} from "react-router-dom";
 import {maxLength, requiredField} from "../../../shared/lib/validators";
+import {userAuth} from "../../../shared/api/http-querry";
+import {AppPages} from "../../../shared/lib/routes";
 
 interface ILogin {
     value: string,
@@ -24,7 +37,8 @@ const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
         errors: []
     });
     const [showPassword, setShowPassword] = useState(false);
-
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
     const changeLoginState = (value: string) => {
         const error = [];
         if (requiredField(value) != true) error.push(requiredField(value))
@@ -43,11 +57,53 @@ const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
     const changeShowPasswordState = () => {
         setShowPassword(!showPassword);
     }
-    const handleSubmit = () => {
-        alert("click")
+    const handleSubmit = async () => {
+        setLoading(true);
+        if (requiredField(login.value) != true) {
+            setLogin({...login, errors: [requiredField(login.value)]})
+        } else if (requiredField(password.value) != true) {
+            setPassword({...password, errors: [requiredField(password.value)]})
+        } else {
+            const request = await userAuth(login.value, password.value).then(
+                response => {
+                    if (response.ok) {
+                        response.json().then(token => {
+                            setOpen(false);
+                            localStorage.setItem("token", token.auth_token)});
+                            navigate(AppPages.MAIN);
+                    } else {
+                        setOpen(true);
+                    }
+                }
+            )
+
+        }
+        setLoading(false);
     }
     return (
         <div className={styles.signInForm}>
+            <Box sx={{width: '100%'}} className={styles.failWindow}>
+                <Collapse in={open}>
+                    <Alert
+                        severity="error"
+                        action={
+                            <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
+                            >
+                                <Close fontSize="inherit"/>
+                            </IconButton>
+                        }
+                        sx={{mb: 2}}
+                    >
+                        Неверный логин или пароль!
+                    </Alert>
+                </Collapse>
+            </Box>
             <div className={styles.signInBlock}>
                 <h1 className={styles.formHeader}>Войти</h1>
                 <div>
