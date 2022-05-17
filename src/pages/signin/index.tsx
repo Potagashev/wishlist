@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import Header from "../../widgets/header/ui";
-import Footer from "../../widgets/footer/ui";
+
 import SignInForm from "../../entities/siginInForm/ui";
 import styles from "./style.module.scss";
 import {CircularProgress} from "@mui/material";
+import {Header} from "widgets/header";
+import {Footer} from "widgets/footer";
 
 const SignIn: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);

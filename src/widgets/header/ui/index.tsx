@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./style.module.scss";
 import NotesIcon from '@mui/icons-material/Notes';
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
     return (
         <header className={styles.header}>
             <NotesIcon fontSize={"small"}/>
@@ -10,4 +10,3 @@ const Header: React.FC = () => {
         </header>
     )
 }
-export default Header;
