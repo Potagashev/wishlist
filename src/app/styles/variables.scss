@@ -1,5 +1,9 @@
 //colors
-$primaryColor: #1976d2;
+$primaryColor: #d27eba;
+$lighter-primary-color: #e9b3da;
+$darker-primary-color: #d17bbb;
+$dark-primary-color: #88246e;
+$default-font-color: #fd6a7e;
 
 //window-sizes
 $xl: 1140px;
@@ -10,3 +14,77 @@ $sm: 540px;
 //font
 $fontGilroy: Gilroy;
 $fontFactorA: FactorA;
+
+//main block settings
+$padding-container-fluid: 2em 0;
+$padding-main-container-xl: 20px 40px;
+$margin-main-container: 2em 0;
+
+%justify-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $default-font-color;
+  font-weight: 600;
+  font-family: $fontFactorA;
+}
+
+span,
+li,
+q {
+  color: $default-font-color;
+  font-family: $fontFactorA;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+q {
+  &:before {
+    content: "«";
+  }
+
+  &:after {
+    content: "»";
+  }
+}
+
+%smoothUnderline {
+  &:after {
+    display: block;
+    position: absolute;
+    top: auto;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $primaryColor;
+    content: "";
+    transition: width 0.3s ease-out;
+  }
+
+  &:hover:after,
+  &:focus:after {
+    width: 100%;
+  }
+}
+
+%justify-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+%justify-flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

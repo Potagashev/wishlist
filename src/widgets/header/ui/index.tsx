@@ -6,7 +6,7 @@ export const Header: React.FC = () => {
     return (
         <header className={styles.header}>
             <NotesIcon fontSize={"small"}/>
-            <h1 className={styles.headerTitle}>WishList</h1>
+            <span className={styles.headerTitle}>WishList</span>
         </header>
     )
 }
