@@ -1,0 +1,60 @@
+@import "../../../app/styles/variables";
+@import "../../../app/styles/theme";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  @extend %justify-center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+
+  transition: 0.5s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modalContent {
+    width: auto;
+    min-width: 400px;
+    height: auto;
+    min-height: 200px;
+    padding: 30px;
+    background-color: $bg-main-container;
+    border-radius: $button-border-radius;
+
+    box-shadow: $main-container-box-shadow;
+
+    transform: scale(0.5);
+    transition: 0.4s all;
+
+    &.active {
+      transform: scale(1);
+    }
+
+    .modalHeader {
+      width: 100%;
+      @extend %justify-center;
+      justify-content: space-between;
+
+      margin-bottom: 2em;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    .modalContent {
+      min-width: 300px;
+      height: auto;
+      min-height: 200px;
+      padding: 15px;
+    }
+  }
+}

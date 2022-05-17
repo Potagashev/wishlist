@@ -1,0 +1,54 @@
+@import "../../../app/styles/variables";
+@import "../../../app/styles/theme";
+
+.buttonDefault {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 5px 10px;
+
+  background-color: $main-bg-color;
+  border-radius: $button-border-radius !important;
+
+  border: none;
+
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: $fontGilroy;
+
+  box-shadow: $main-container-box-shadow;
+
+  &.paginateButton {
+    border: 1px solid #0000002e;
+    background-color: #e0e0e0;
+
+    font-weight: 300;
+  }
+
+  &.rounded {
+    border-radius: 50%;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  &.submit {
+    background: rgb(53, 55, 119);
+    color: rgba(255, 255, 255, 0.93);
+    border: none;
+    font-size: 12px;
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .buttonDefault {
+    min-width: 30px;
+    min-height: 30px;
+    padding: 5px;
+
+    font-size: 10px !important;
+  }
+}
+
+@media screen and(max-width: 400px) {
+}
