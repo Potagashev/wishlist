@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./style.module.scss";
 import {
     Alert,
@@ -17,17 +17,18 @@ import {NavLink, useNavigate} from "react-router-dom";
 import {maxLength, requiredField} from "../../../shared/lib/validators";
 import {userAuth} from "../../../shared/api/http-querry";
 import {AppPages} from "../../../shared/lib/routes";
+import {$userToken, setToken, signInFx, updateToken} from "../model";
+import {useStore} from "effector-react";
 
 interface ILogin {
     value: string,
     errors: any[] | never[]
 }
 
-interface SignInFormsProps {
-    setLoading(value: boolean): void
-}
 
-const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
+const SignInForm: React.FC = () => {
+    const token = useStore($userToken);
+
     const [login, setLogin] = useState<ILogin>({
         value: "",
         errors: []
@@ -60,29 +61,29 @@ const SignInForm: React.FC<SignInFormsProps> = ({setLoading}) => {
         setShowPassword(!showPassword);
     }
     const handleSubmit = async () => {
-        setLoading(true);
+        setToken(null);
         if (requiredField(login.value) != true) {
             setLogin({...login, errors: [requiredField(login.value)]})
         } else if (requiredField(password.value) != true) {
             setPassword({...password, errors: [requiredField(password.value)]})
         } else {
-            const request = await userAuth(login.value, password.value).then(
-                response => {
-                    if (response.ok) {
-                        response.json().then(token => {
-                            setOpen(false);
-                            localStorage.setItem("token", token.auth_token)
-                        });
-                        navigate(AppPages.MAIN);
-                    } else {
-                        setOpen(true);
-                    }
-                }
-            )
+            setOpen(false);
+            updateToken({login: login.value, password: password.value});
 
         }
-        setLoading(false);
+
     }
+    useEffect(() => {
+        setToken(null);
+    }, [])
+
+    useEffect(() => {
+        if (token === "error") {
+            setOpen(true);
+        } else if (token) {
+            navigate(AppPages.MAIN);
+        }
+    }, [token])
     return (
         <div className={styles.signInForm}>
 

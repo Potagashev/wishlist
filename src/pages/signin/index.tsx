@@ -5,14 +5,16 @@ import styles from "./style.module.scss";
 import {CircularProgress} from "@mui/material";
 import {Header} from "widgets/header";
 import {Footer} from "widgets/footer";
+import {signInFx} from "entities/siginInForm/model";
+import {useStore} from "effector-react";
 
 const SignIn: React.FC = () => {
-    const [isLoading, setIsLoading] = useState(false);
+    const isLoading = useStore(signInFx.pending);
     return (
         <div>
             <div className={isLoading ? styles.signinLoading : styles.signin}>
                 <Header/>
-                <SignInForm setLoading={setIsLoading}/>
+                <SignInForm/>
                 <Footer/>
             </div>
             {isLoading ? <div className={styles.loadingModal}>
