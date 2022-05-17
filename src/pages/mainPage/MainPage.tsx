@@ -1,13 +1,15 @@
 import React from "react";
 
-import Header from "../../widgets/header/ui";
-import Footer from "../../widgets/footer/ui";
+
+
 
 import svgPresentIcon from "../../app/icons/svgPresentIcon.svg";
 
 import c from "./mainPage.module.scss";
 import styles from "../../entities/siginInForm/ui/style.module.scss";
 import { NavLink } from "react-router-dom";
+import { Footer } from "widgets/footer";
+import { Header } from "widgets/header";
 
 const MainPage: React.FC = () => {
   return (
