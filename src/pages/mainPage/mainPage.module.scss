@@ -4,10 +4,7 @@
 .mainLayoutContainer {
   @extend %justify-center;
   position: relative;
-  width: 100vw;
   min-height: auto;
-
-  padding: $padding-container-fluid;
 
   .mainLayoutContent {
     width: 100%;
@@ -15,13 +12,13 @@
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: $padding-main-container-xl;
     margin: 0 10px;
 
-    box-shadow: $main-container-box-shadow;
+    /*box-shadow: $main-container-box-shadow;
     border-radius: $main-container-border-radius;
-    background-color: $bg-main-container;
+    background-color: $bg-main-container;*/
 
     .welcomeBlock {
       width: 50%;
@@ -70,8 +67,11 @@
         width: 100%;
 
         @extend %justify-flex-start;
+        align-items: flex-end;
 
         margin-top: 2rem;
+
+        line-height: 30px;
 
         & > h3 {
           font-size: 20px;
@@ -87,7 +87,7 @@
 
     .navBlock {
       width: 30%;
-      padding: 30px;
+      padding: 10px;
 
       & > ul {
         & > li {
@@ -122,6 +122,48 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: $lg) {
+  .mainLayoutContent {
+    flex-wrap: wrap;
+  }
+
+  .navBlock {
+    width: 100% !important;
+  }
+
+  .welcomeBlock {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: $md) {
+  .welcomeBlock > h1 {
+    font-size: 36px !important;
+  }
+
+  .welcomeBlock {
+    & > .startDoingBlock > h2 {
+      font-size: 20px !important;
+    }
+
+    & > .currentEvent > h3 {
+      font-size: 18px !important;
+    }
+
+    & > .currentEvent {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .mainLayoutContainer {
+    & > .mainLayoutContent {
+      padding: 10px 20px;
     }
   }
 }

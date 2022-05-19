@@ -87,121 +87,152 @@ const SignInForm: React.FC = () => {
         }
     }, [token])
     return (
-        <div className={styles.signInForm}>
-
-            <Box sx={{width: '100%'}} className={styles.failWindow}>
-                <Collapse in={open}>
-                    <Alert
-                        severity={"error"}
-                        action={
-                            <IconButton
-                                aria-label="close"
-                                color="inherit"
-                                size="small"
-                                onClick={() => {
-                                    setOpen(false);
-                                }}
-                            >
-                                <Close fontSize="inherit"/>
-                            </IconButton>
-                        }
-                        sx={{mb: 2}}
-                    >
-                        Неверный логин или пароль!
-                    </Alert>
-                </Collapse>
-            </Box>
-            <Box sx={{width: '100%'}} className={styles.failWindow}>
-                <Collapse in={alreadySignUp}>
-                    <Alert
-
-                        action={
-                            <IconButton
-                                aria-label="close"
-                                color="inherit"
-                                size="small"
-                                onClick={() => {
-                                    localStorage.removeItem("alreadySignUp");
-                                    setAlreadySignUp(false);
-                                }}
-                            >
-                                <Close fontSize="inherit"/>
-                            </IconButton>
-                        }
-                        sx={{mb: 2}}
-                    >
-                        Аккаунт успешно создан!
-                    </Alert>
-                </Collapse>
-            </Box>
-            <div className={styles.signInBlock}>
-                <h3 className={styles.formHeader}>Войти</h3>
-                <div>
-                    <FormControl sx={{width: 1}} variant="outlined">
-                        {login.errors.length === 0 ?
-                            <TextField id="input-with-sx" value={login.value}
-                                       onChange={event => changeLoginState(event.target.value)}
-                                       label="Логин"
-                                       variant="standard"
-                                       sx={{width: 1}}/> :
-                            <TextField
-                                error
-                                id="standard-error-helper-text"
-                                label="Логин"
-                                sx={{width: 1}}
-                                value={login.value}
-                                onChange={event => changeLoginState(event.target.value)}
-                                helperText={login.errors[0]}
-                                variant="standard"
-                            />}
-                    </FormControl>
-
-                </div>
-                <div className={styles.password}>
-                    <FormControl sx={{width: 1}} variant="outlined">
-                        {password.errors.length === 0 ?
-                            <><InputLabel variant={"standard"}
-                                          htmlFor="standard-adornment-password">Пароль</InputLabel><Input
-                                id="standard-adornment-password"
-                                type={showPassword ? 'text' : 'password'}
-                                value={password.value}
-                                onChange={event => changePasswordState(event.target.value)}
-                                endAdornment={<InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={changeShowPasswordState}>
-                                        {showPassword ? <VisibilityOff/> : <Visibility/>}
-                                    </IconButton>
-                                </InputAdornment>}/></> :
-                            <>
-                                <TextField
-                                    error
-                                    id="standard-error-helper-text"
-                                    helperText={password.errors[0]}
-                                    variant="standard"
-                                    type={showPassword ? 'text' : 'password'}
-                                    label={"Пароль"}
-                                    value={password.value}
-                                    onChange={event => changePasswordState(event.target.value)}
-                                    InputProps={{
-                                        endAdornment: (<InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={changeShowPasswordState}>
-                                                {showPassword ? <VisibilityOff/> : <Visibility/>}
-                                            </IconButton>
-                                        </InputAdornment>)
-                                    }}
-                                /></>}
-                    </FormControl>
-                </div>
-                <Button className={styles.button} onClick={handleSubmit} variant="contained">Войти</Button>
-                <h1 className={styles.signUp}>У Вас еще нет аккаунта? <NavLink className={styles.link}
-                                                                               to={"/signUp"}>Зарегистрируйтесь</NavLink>
-                </h1>
-            </div>
-
+      <div className={styles.signInForm}>
+        <Box sx={{ width: "100%" }} className={styles.failWindow}>
+          <Collapse in={open}>
+            <Alert
+              severity={"error"}
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <Close fontSize="inherit" />
+                </IconButton>
+              }
+              sx={{ mb: 2 }}
+            >
+              Неверный логин или пароль!
+            </Alert>
+          </Collapse>
+        </Box>
+        <Box sx={{ width: "100%" }} className={styles.failWindow}>
+          <Collapse in={alreadySignUp}>
+            <Alert
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    localStorage.removeItem("alreadySignUp");
+                    setAlreadySignUp(false);
+                  }}
+                >
+                  <Close fontSize="inherit" />
+                </IconButton>
+              }
+              sx={{ mb: 2 }}
+            >
+              Аккаунт успешно создан!
+            </Alert>
+          </Collapse>
+        </Box>
+        <div className={styles.signInBlock}>
+          <h1 className={styles.formHeader}>Войти</h1>
+          <div>
+            <FormControl sx={{ width: 1 }} variant="outlined">
+              {login.errors.length === 0 ? (
+                <TextField
+                  id="input-with-sx"
+                  value={login.value}
+                  onChange={(event) => changeLoginState(event.target.value)}
+                  label="Логин"
+                  variant="standard"
+                  sx={{ width: 1 }}
+                />
+              ) : (
+                <TextField
+                  error
+                  id="standard-error-helper-text"
+                  label="Логин"
+                  sx={{ width: 1 }}
+                  value={login.value}
+                  onChange={(event) => changeLoginState(event.target.value)}
+                  helperText={login.errors[0]}
+                  variant="standard"
+                />
+              )}
+            </FormControl>
+          </div>
+          <div className={styles.password}>
+            <FormControl sx={{ width: 1 }} variant="outlined">
+              {password.errors.length === 0 ? (
+                <>
+                  <InputLabel
+                    variant={"standard"}
+                    htmlFor="standard-adornment-password"
+                  >
+                    Пароль
+                  </InputLabel>
+                  <Input
+                    id="standard-adornment-password"
+                    type={showPassword ? "text" : "password"}
+                    value={password.value}
+                    onChange={(event) =>
+                      changePasswordState(event.target.value)
+                    }
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={changeShowPasswordState}
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                  />
+                </>
+              ) : (
+                <>
+                  <TextField
+                    error
+                    id="standard-error-helper-text"
+                    helperText={password.errors[0]}
+                    variant="standard"
+                    type={showPassword ? "text" : "password"}
+                    label={"Пароль"}
+                    value={password.value}
+                    onChange={(event) =>
+                      changePasswordState(event.target.value)
+                    }
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={changeShowPasswordState}
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </>
+              )}
+            </FormControl>
+          </div>
+          <Button
+            className={styles.button}
+            onClick={handleSubmit}
+            variant="contained"
+          >
+            Войти
+          </Button>
+          <h1 className={styles.signUp}>
+            У Вас еще нет аккаунта?{" "}
+            <NavLink className={styles.link} to={"/signUp"}>
+              Зарегистрируйтесь
+            </NavLink>
+          </h1>
         </div>
-    )
+      </div>
+    );
 }
 export default SignInForm;
