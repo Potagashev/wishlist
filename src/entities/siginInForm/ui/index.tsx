@@ -75,12 +75,14 @@ const SignInForm: React.FC = () => {
     }
     useEffect(() => {
         setToken(null);
+        localStorage.removeItem('token');
     }, [])
 
     useEffect(() => {
         if (token === "error") {
             setOpen(true);
         } else if (token) {
+            localStorage.setItem("token", token);
             navigate(AppPages.MAIN);
         }
     }, [token])
