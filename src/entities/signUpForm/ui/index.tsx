@@ -196,7 +196,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({setLoading}) => {
                 </Collapse>
             </Box>
             <div className={styles.signUpBlock}>
-                <h1 className={styles.formHeader}>Зарегистрироваться</h1>
+                <h3 className={styles.formHeader}>Зарегистрироваться</h3>
                 {firstname.errors.length === 0 ?
                     <TextField id="input-with-sx"
                                label="Имя"

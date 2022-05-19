@@ -135,7 +135,7 @@ const SignInForm: React.FC = () => {
                 </Collapse>
             </Box>
             <div className={styles.signInBlock}>
-                <h1 className={styles.formHeader}>Войти</h1>
+                <h3 className={styles.formHeader}>Войти</h3>
                 <div>
                     <FormControl sx={{width: 1}} variant="outlined">
                         {login.errors.length === 0 ?
