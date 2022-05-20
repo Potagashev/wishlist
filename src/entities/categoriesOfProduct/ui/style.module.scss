@@ -1,0 +1,27 @@
+@import "../../../app/styles/theme";
+@import "../../../app/styles/variables";
+
+.listOfCategoriesContainer {
+  width: 100%;
+  max-width: $xl;
+
+  padding: $padding-main-container-xl;
+  margin: 2em 10px;
+
+  .titleBlock {
+    width: 100%;
+
+    .title {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+
+    & > h2 {
+      font-weight: lighter;
+    }
+
+    & > hr {
+      color: #f0f8ff8f;
+    }
+  }
+}

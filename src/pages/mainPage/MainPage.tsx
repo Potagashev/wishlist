@@ -6,14 +6,18 @@ import svgPresentIcon from "../../app/icons/svgPresentIcon.svg";
 import { Footer } from "widgets/footer";
 import { Header } from "widgets/header";
 
+import ListOfCategories from "../../entities/categoriesOfProduct/ui";
+
 import c from "./mainPage.module.scss";
 import styles from "../../entities/siginInForm/ui/style.module.scss";
+import { Container } from "@mui/material";
 
+//TODO: align items - center; footer doesn't sticks properly
 const MainPage: React.FC = () => {
   return (
     <div>
       <Header />
-      <div className={c.mainLayoutContainer}>
+      <Container className={c.mainLayoutContainer}>
         <div className={c.mainLayoutContent}>
           <div className={c.welcomeBlock}>
             <h1>Добро пожаловать в WishList!</h1>
@@ -55,7 +59,9 @@ const MainPage: React.FC = () => {
             </ul>
           </div>
         </div>
-      </div>
+        <ListOfCategories />
+      </Container>
+
       <Footer />
     </div>
   );
