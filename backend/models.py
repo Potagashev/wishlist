@@ -4,7 +4,8 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
-from backend.constants import CATEGORIES, GENDERS, SUB_CATEGORIES, REGISTRATION_REQUIRED_FIELDS
+from backend.constants import REGISTRATION_REQUIRED_FIELDS, GENDERS
+from categories.models import Category, Subcategory
 from utils import get_ru_cities_from_wiki as get_cities
 
 
@@ -54,8 +55,17 @@ class MyUser(AbstractUser):
 
 class Gift(models.Model):
     name = models.CharField(max_length=256)
-    category = models.CharField(max_length=128, choices=CATEGORIES)
-    sub_category = models.CharField(max_length=128, choices=SUB_CATEGORIES)
+    category = models.ForeignKey(
+        Category,
+        null=True,
+        on_delete=models.SET_DEFAULT,
+        default=Category.objects.get(id=14).pk
+    )
+    sub_category = models.ForeignKey(
+        Subcategory,
+        null=True,
+        on_delete=models.SET_NULL
+    )
     price = models.IntegerField()
     description = models.CharField(max_length=10000)
     photo = models.CharField(max_length=256, default=None)
@@ -68,6 +78,7 @@ class Wishlist(models.Model):
     name = models.CharField(max_length=128)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
+    event_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return self.name

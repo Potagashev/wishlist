@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     'corsheaders',
 
+    'categories.apps.CategoriesConfig',
     'backend.apps.BackendConfig',
     'friendship.apps.FriendshipConfig',
 

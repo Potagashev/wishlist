@@ -25,15 +25,16 @@ urlpatterns = [
     path(r'api/v1/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
 
-    # POST - /api/v1/auth/users/ - создать юзера
-    # GET - /api/v1/auth/users/ - список юзеров
-    # POST - /auth/token/login/ - авторизация с выдачей токена
-    # GET - /users/me/ - {{ User.USERNAME_FIELD }} {{ User._meta.pk.name }} {{ User.REQUIRED_FIELDS }}
-    # PUT - /users/me/ - на вход по идее нужно дать все обязательные поля, как минимум, выдает то, что и в ГЕТе
-    # PATCH - /users/me/ - на вход надо отдать поле, которое будет меняться
-    # DELETE - /users/me/ - удаление пользователя, в запросе нужно отдать пароль
-
-    # DOCS https://djoser.readthedocs.io/en/latest/base_endpoints.html
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# POST - /api/v1/auth/users/ - создать юзера
+# GET - /api/v1/auth/users/ - список юзеров
+# POST - /auth/token/login/ - авторизация с выдачей токена
+# GET - /users/me/ - {{ User.USERNAME_FIELD }} {{ User._meta.pk.name }} {{ User.REQUIRED_FIELDS }}
+# PUT - /users/me/ - на вход по идее нужно дать все обязательные поля, как минимум, выдает то, что и в ГЕТе
+# PATCH - /users/me/ - на вход надо отдать поле, которое будет меняться
+# DELETE - /users/me/ - удаление пользователя, в запросе нужно отдать пароль
+
+# DOCS https://djoser.readthedocs.io/en/latest/base_endpoints.html
