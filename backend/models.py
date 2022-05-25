@@ -59,7 +59,7 @@ class Gift(models.Model):
         Category,
         null=True,
         on_delete=models.SET_DEFAULT,
-        default=Category.objects.get(id=14).pk
+        default=14
     )
     sub_category = models.ForeignKey(
         Subcategory,

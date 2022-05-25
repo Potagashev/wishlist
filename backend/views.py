@@ -2,6 +2,7 @@ from rest_framework import generics
 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
+from backend.pagination import GiftAPIListPagination, WishlistAPIListPagination
 from backend.permissions import IsOwner, ReadOnly, IsFriend
 from backend.models import Gift, WishlistItem, MyUser, Wishlist
 from backend.serializers import \
@@ -26,6 +27,7 @@ class GiftAPIListCreate(generics.ListCreateAPIView):
     queryset = Gift.objects.all()
     serializer_class = GiftSerializer
     permission_classes = [IsAdminUser | (ReadOnly & IsAuthenticated)]  # добавлять записи в каталог могут ток админы,
+    pagination_class = GiftAPIListPagination
     # читать - авторизованные
 
 
@@ -50,6 +52,7 @@ class WishlistAPICreate(generics.CreateAPIView):
 
 
 class WishlistAPIList(generics.ListAPIView):
+    pagination_class = WishlistAPIListPagination
     # если нет параметров, то для текущего пользователя
     # иначе для того, кто указан в параметрах
     def get_queryset(self):
