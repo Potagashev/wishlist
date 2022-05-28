@@ -7,7 +7,6 @@ from django.utils.translation import gettext_lazy as _
 from backend import constants
 from backend.constants import REGISTRATION_REQUIRED_FIELDS, GENDERS
 from categories.models import Category, Subcategory
-from utils import get_ru_cities_from_wiki as get_cities
 
 
 class CustomUserManager(UserManager):
