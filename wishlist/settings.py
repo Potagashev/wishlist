@@ -28,11 +28,12 @@ SECRET_KEY = 'django-insecure-10g91g^=np7&#6s%7ri8%w6##8%rc=or@-&@n)4rk!&n&c4%3%
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '0.0.0.0',
     'wishlist-app-tpu.herokuapp.com',
     '127.0.0.1',
     'http://localhost:3000',
     'http://localhost:8000',
-    'localhost'
+    'localhost',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -110,13 +111,24 @@ WSGI_APPLICATION = 'wishlist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd9u70h2jlv1je7',
-        'USER': 'pnzugabbozwfhm',
-        'PASSWORD': '4e7d47d0f3cd434c44d344a0d69381a4ef5a46ff09a86c25084c1ced19b0cb4f',
-        'HOST': 'ec2-176-34-211-0.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST'),
+        'PORT': 5432,
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd9u70h2jlv1je7',
+#         'USER': 'pnzugabbozwfhm',
+#         'PASSWORD': '4e7d47d0f3cd434c44d344a0d69381a4ef5a46ff09a86c25084c1ced19b0cb4f',
+#         'HOST': 'ec2-176-34-211-0.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
