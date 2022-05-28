@@ -26,3 +26,9 @@ def get_ru_cities_from_wiki():
         cities.append((city['name'], f"{city['name']}, {city['subject']}"))
 
     return cities
+
+#     with open('cities.txt', 'w') as file:
+#         file.write(str(cities))
+#
+#
+# get_ru_cities_from_wiki()

@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
+from backend import constants
 from backend.constants import REGISTRATION_REQUIRED_FIELDS, GENDERS
 from categories.models import Category, Subcategory
 from utils import get_ru_cities_from_wiki as get_cities
@@ -16,9 +17,6 @@ class CustomUserManager(UserManager):
             Q(**{self.model.USERNAME_FIELD: username}) |
             Q(**{self.model.EMAIL_FIELD: username})
         )
-
-
-cities = get_cities.get_ru_cities_from_wiki()
 
 
 class MyUser(AbstractUser):
@@ -45,7 +43,7 @@ class MyUser(AbstractUser):
     email = models.EmailField(_("email address"), unique=True, blank=False, null=False)
     patronymic = models.CharField(blank=True, null=True, max_length=256, verbose_name='patronymic')
     gender = models.CharField(blank=True, null=True, max_length=64, choices=GENDERS)
-    city = models.CharField(blank=True, null=True, max_length=256, choices=cities)
+    city = models.CharField(blank=True, null=True, max_length=256, choices=constants.CITIES)
     b_date = models.DateField(blank=True, null=True)
     photo = models.ImageField(upload_to='media/my_user/avatar/', blank=True, null=True, max_length=256, default=None)
 
