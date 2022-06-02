@@ -10,6 +10,7 @@ services:
       - POSTGRES_DB=d9u70h2jlv1je7
       - POSTGRES_USER=pnzugabbozwfhm
       - POSTGRES_PASSWORD=4e7d47d0f3cd434c44d344a0d69381a4ef5a46ff09a86c25084c1ced19b0cb4f
+      - POSTGRES_PORT=5432
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8080
@@ -22,5 +23,6 @@ services:
       - POSTGRES_NAME=d9u70h2jlv1je7
       - POSTGRES_USER=pnzugabbozwfhm
       - POSTGRES_PASSWORD=4e7d47d0f3cd434c44d344a0d69381a4ef5a46ff09a86c25084c1ced19b0cb4f
+      - POSTGRES_PORT=5432
     depends_on:
       - db
