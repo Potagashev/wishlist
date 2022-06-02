@@ -6,7 +6,7 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
-#ADD . .
+ADD . .
 #EXPOSE 8080
 #CMD ["gunicorn", "--bind", ":8080", "--workers", "3", "core.wsgi.application"]
-#CMD gunicorn wishlist.wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn wishlist.wsgi:application --bind 0.0.0.0:$PORT
