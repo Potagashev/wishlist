@@ -4,7 +4,7 @@
 .mainLayoutContainer {
   @extend %justify-center;
   position: relative;
-  min-height: auto;
+  min-height: calc(100vh - 116px);
 
   .mainLayoutContent {
     width: 100%;
@@ -156,14 +156,6 @@
 
     & > .currentEvent {
       flex-wrap: wrap;
-    }
-  }
-}
-
-@media screen and (max-width: $sm) {
-  .mainLayoutContainer {
-    & > .mainLayoutContent {
-      padding: 10px 20px;
     }
   }
 }

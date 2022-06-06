@@ -1,19 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import svgPresentIcon from "../../app/icons/svgPresentIcon.svg";
+import { useStore } from "effector-react";
 
 import { Footer } from "widgets/footer";
 import { Header } from "widgets/header";
 
 import ListOfCategories from "../../entities/categoriesOfProduct/ui";
 
+import {Container } from "@mui/material";
+
+import {
+  $categories,
+  getCategories,
+} from "../../entities/categoriesOfProduct/model";
+
+import { $userToken } from "../../entities/siginInForm/model";
+
+import { CategoriesStore } from "../../shared/types";
+
+import svgPresentIcon from "../../app/icons/svgPresentIcon.svg";
+
 import c from "./mainPage.module.scss";
 import styles from "../../entities/siginInForm/ui/style.module.scss";
-import { Container } from "@mui/material";
 
 //TODO: align items - center; footer doesn't sticks properly
 const MainPage: React.FC = () => {
+  const { categories } = useStore<CategoriesStore>($categories);
+
+  useEffect(() => {
+    if (localStorage.getItem("token") !== "") {
+      console.log(localStorage.getItem("token"));
+
+      getCategories();
+    }
+  }, [$userToken]);
+
   return (
     <div>
       <Header />
@@ -59,9 +81,8 @@ const MainPage: React.FC = () => {
             </ul>
           </div>
         </div>
-        <ListOfCategories />
+        <ListOfCategories categories={categories} />
       </Container>
-
       <Footer />
     </div>
   );

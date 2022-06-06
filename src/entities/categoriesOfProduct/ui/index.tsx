@@ -1,17 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
+import { $categoriesGetStatus } from "../model";
 import { useStore } from "effector-react";
 
-import { CategoriesStore } from "../../../shared/types";
-import { $categories } from "../model";
-
+import { Category } from "../../../shared/interfaces/category";
 import CategoryOfProduct from "../categoryOfProduct/ui";
+import { Matches } from "../../../shared/helpers/Matches";
+
+import { CircularProgress } from "@mui/material";
 
 import c from "./style.module.scss";
 
-//TODO: додавить крутилку, добавить получение категорий с сервера
-const ListOfCategories: React.FC = () => {
-  const { categories } = useStore<CategoriesStore>($categories);
+interface IProps {
+  categories: Category[];
+}
+
+const ListOfCategories: React.FC<IProps> = ({ categories }: IProps) => {
+  useEffect(() => {}, [categories]);
+
+  const { loading } = useStore($categoriesGetStatus);
+
+  const categoriesOfProducts = (
+    <div className={c.categoriesTable}>
+      {categories.map((category, number) => {
+        return (
+          <CategoryOfProduct
+            key={number}
+            categoryName={category.category_name}
+            categoryImg={Matches.matchParams(category.name)}
+          />
+        );
+      })}
+    </div>
+  );
+
+  const preloaderContainer = (
+    <div className={c.preloaderContainer}>
+      <CircularProgress />
+    </div>
+  );
 
   return (
     <div className={c.listOfCategoriesContainer}>
@@ -23,17 +50,7 @@ const ListOfCategories: React.FC = () => {
         </h2>
         <hr className={c.hrSeparator} />
       </div>
-
-      {categories.map((category) => {
-        return (
-          <CategoryOfProduct
-            key={category.categoryId}
-            categoryId={category.categoryId}
-            categoryImg={category.categoryImg}
-            categoryName={category.categoryName}
-          />
-        );
-      })}
+      {!loading ? categoriesOfProducts : preloaderContainer}
     </div>
   );
 };

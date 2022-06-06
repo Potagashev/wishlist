@@ -1,5 +1,6 @@
 @import "src/app/styles/variables";
 
+//изменяю футер для корректного отображения на главной странице
 .footer {
   font-family: $fontFactorA;
   font-size: 15px;
@@ -8,7 +9,7 @@
   box-sizing: border-box;
   background-color: $primaryColor;
   color: white;
-  position: absolute;
+  //position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;

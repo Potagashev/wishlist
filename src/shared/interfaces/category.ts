@@ -1,9 +1,4 @@
-import { SubCategory } from "./subCategory";
-
 export interface Category {
-  categoryId: number;
-  categoryName: string;
-  listOfSubCategories: SubCategory[];
-  categoryImg: string;
+  name: string;
+  category_name: string;
 }
-
